@@ -22,9 +22,11 @@ namespace Checkers.Interfaces
 
 
         [OperationContract]
-        [WebGet(UriTemplate = "login2", ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(UriTemplate = "test", ResponseFormat = WebMessageFormat.Json)]
         LoginResponse test();
-
+        [OperationContract]
+        [WebGet(UriTemplate = "test2", ResponseFormat = WebMessageFormat.Json)]
+        LoginResponse test2();
         }
 
         [DataContract]
