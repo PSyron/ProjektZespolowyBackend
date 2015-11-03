@@ -7,8 +7,9 @@ using System.Text;
 using Checkers.Interfaces;
 namespace Checkers.Services
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Game" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Game.svc or Game.svc.cs at the Solution Explorer and start debugging.
+    /// <summary>
+    /// Serwis odpowiedzialny za panowanie nad rozgrywka.
+    /// </summary>
     public class Game : IGame
     {
         public void DoWork()

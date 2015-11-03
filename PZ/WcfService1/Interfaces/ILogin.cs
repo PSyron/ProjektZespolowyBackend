@@ -8,7 +8,10 @@ using System.Text;
 
 namespace Checkers.Interfaces
 {
-
+    /// <summary>
+    /// Odwolujemy sie do metod zwartych w serwisach odwolujemy sie zgodnie z UriTemplate czyli np tak: http://localhost:13622/Services/Login.svc/test
+    /// Aby dodac parametry do wywolywanej metody robimy tak:http://localhost:13622/Services/Login.svc/session/9fa1c33c-4180-4b02-9e2f-aa83f5e3af3f
+    /// </summary>
     [ServiceContract]
     public interface ILogin
     {
@@ -29,28 +32,7 @@ namespace Checkers.Interfaces
         LoginResponse test2();
         }
 
-        [DataContract]
-        public class RequestLogin
-        {
-            [DataMember]
-            public String Login { get; set; }
-            [DataMember]
-            public Boolean Password { get; set; }
-        }
-        [DataContract]
-        public class RequestLog
-        {
-            [DataMember]
-            public String Login { get; set; }
-        }
-        [DataContract]
-        public class RequestSession
-        {
-            [DataMember]
-            public String Session { get; set; }
-            [DataMember]
-            public Boolean Authorized { get; set; }
-        }
+    //Mozna dodac jeszcze obiekt z wiadomoscia, ktora wyjasnia czemu nie wpuscilo
         [DataContract]
         public class LoginResponse
         {

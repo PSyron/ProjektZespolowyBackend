@@ -5,20 +5,21 @@ using System.Web;
 
 namespace Checkers.Models
 {
+    /// <summary>
+    /// Model odzwierciedlajacy ruch gracza. Wskazuje na 
+    /// </summary>
     public class mMove
     {
-        int idTable;
         int idGame;
         int idPlayer;
-        mPawn PawnPre;
-        mPawn PawnPost;
-        mPawn PawnDown;
-        Boolean hasNextMove;
-        Boolean moveAllowed;
+        mPawn PawnPre; //stan pionka przed
+        mPawn PawnPost; //stan pionka po
+        mPawn PawnDown; //zbity pionek w ruchu
+        Boolean hasNextMove; //czy po tym ruchu, jest nastepny?
+        Boolean moveAllowed; //tryb rozgrywki, czy mozna wykonac taki ruch, czy nie
         
-        public mMove(int idTable, int idGame, int idPlayer, mPawn Pawn, int postColumn, int postRow)
+        public mMove(int idGame, int idPlayer, mPawn Pawn, int postColumn, int postRow)
         {
-            this.idTable = idTable;
             this.idGame = idGame;
             this.idPlayer = idPlayer;
             PawnPre=Pawn;

@@ -5,6 +5,9 @@ using System.Web;
 
 namespace Checkers.Models
 {
+    /// <summary>
+    /// Model uzytkownika.
+    /// </summary>
     public class mUser
     {
 
@@ -15,7 +18,7 @@ namespace Checkers.Models
         String password;
         String session = "";
         Boolean authorized=false;
-        int ELO = 1000;
+        int ELO = 1000; //ranking punktowy
         
         public mUser(String session, int userID)
         {

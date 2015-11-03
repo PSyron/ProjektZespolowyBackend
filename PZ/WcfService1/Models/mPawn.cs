@@ -5,6 +5,9 @@ using System.Web;
 
 namespace Checkers.Models
 {
+    /// <summary>
+    /// Model pionka
+    /// </summary>
     public class mPawn
     {
         int idPawn;

@@ -9,13 +9,16 @@ using Checkers.Models;
 using Checkers.Interfaces;
 namespace Checkers.Services
 {
+    /// <summary>
+    /// Serwis odpowiedzialny za usluge logowania i nadzorowania sesji.
+    /// </summary>
     public class Login : ILogin
     {
         public LoginResponse session(string session)
         {
             Boolean authorized = false;
-            if (DBControler.logIn(session).isAuthorized() == true) authorized = true;
-
+            mUser temp = DBControler.logIn(session);
+            if (temp != null && temp.isAuthorized() == true) authorized = true;
             return new LoginResponse
             {
                 Session = session,
@@ -40,7 +43,7 @@ namespace Checkers.Services
                 Authorized = authorized
             };
         }
-
+        //Sprawdzenie odpowiedzi serwisu
         public LoginResponse test2()
         {
             return new LoginResponse
@@ -49,7 +52,7 @@ namespace Checkers.Services
                 Authorized = true
             };
         }
-
+        //Sprawdzenie odpowiedzi z uzyciem bazy danych
         public LoginResponse test()
         {
             String session = "";
@@ -66,21 +69,4 @@ namespace Checkers.Services
             };
         }
     }
-
-
-    /*{
-        public LoginResponse session(String session)
-        {
-            if (DBControler.logIn(session) == true) return new LoginResponse(session, true);            
-            return new LoginResponse(session, false);
-        }
-        public LoginResponse logIn(String login,String password)
-        {
-            mUser user = DBControler.logIn(login, password);
-            if (user == null) return new LoginResponse("", false);
-            return new LoginResponse(user.getSession(), true);
-        } 
-        
-    }
-     */
 }
