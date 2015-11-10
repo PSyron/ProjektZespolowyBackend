@@ -30,9 +30,15 @@ namespace Checkers.App_Data
             if (userid == null) return null;
             mUser user = new mUser(login, password, (int)userid);
             user.authorize();
-            String guid = Guid.NewGuid()+"";
+            String guid;
+            do
+            {
+                guid = Guid.NewGuid() + "";
+            }
+            while (Uta.CheckSession(guid) != null || (int)Uta.CheckSession(guid) != 0);
             user.setSession(guid);
-            Uta.NewSession(guid, userid);
+            //, getAccessDate(DateTime.Now)
+            Uta.NewSession(guid, (int)userid);            
             return user;
         }
         //Rejestracja uzytkownika
@@ -40,15 +46,34 @@ namespace Checkers.App_Data
         {
             //Mozna dodac jeszcze jakies warunki dotyczace hasla
             int userid = -1;
-            if(Uta.LoginExists(login)==1) return null;
+            if((int)Uta.LoginExists(login)==1) return null;
             mUser newUser=new mUser(name, surname, login, password);
             newUser.authorize();
-            String guid = Guid.NewGuid() + "";
+            String guid;
+            do
+            {
+                guid = Guid.NewGuid() + "";
+            }
+            while (Uta.CheckSession(guid) != null || (int)Uta.CheckSession(guid) != 0);
+           
             newUser.setSession(guid);
-            userid = Uta.NewUser(name, surname, login, password, guid);
+            userid = (int)Uta.NewUser(name, login, password, guid);
+            //,getAccessDate(DateTime.Now)
             Uta.NewSession(guid, userid);
             return newUser;
         }
+        public static String czas()
+        {
+
+            return getAccessDate(DateTime.Now).ToString();
+        }
+        private static DateTime getAccessDate(DateTime d)
+        {
+            return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
+        }
+
+
+
      
         }
 }

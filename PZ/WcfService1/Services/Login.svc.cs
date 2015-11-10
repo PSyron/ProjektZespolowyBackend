@@ -48,7 +48,7 @@ namespace Checkers.Services
         {
             return new LoginResponse
             {
-                Session = "lol",
+                Session = DBControler.czas(),
                 Authorized = true
             };
         }
